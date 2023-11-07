@@ -39,14 +39,17 @@ try
             if (guess == TheGame.Guess.less) Console.WriteLine($"Ваше число {variant} менше загаданного, спробуте ще!");
             else if (guess == TheGame.Guess.more) Console.WriteLine($"Ваше число {variant} більше загаданного, спробуте ще!");
             else if (guess == TheGame.Guess.equal) break;
-            Console.Write("Введіть настпний варіант: ");
+            Console.Write("Введіть наступний варіант: ");
             isnumber = int.TryParse(Console.ReadLine(), out variant);
         }
-        Console.WriteLine($"Вітаю! Ви угадали число {variant}");
+        Console.WriteLine($"Вітаю! Ви угадали число {game.getThenumber()}");
         Console.Write("Якщо бажаєте зіграти ще раз, введіть 1:");
         replay = Console.ReadLine()[0];
         if (replay == '1') game.nextGame(m, n);
+        //Console.WriteLine(game.getThenumber());
         isnumber = false;
+        //variant = m-1;
+        guess = TheGame.Guess.notAssigned;
     }
 }
 catch (ConfigurationErrorsException Cex)

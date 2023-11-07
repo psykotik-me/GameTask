@@ -31,7 +31,7 @@ namespace GameTask
         }
 		public int nextGame(int m, int n)
 		{
-            thenumber = new Random().Next(m, n + 1);
+            this.thenumber = new Random().Next(m, n + 1);
 			return thenumber;
         }
 	}
