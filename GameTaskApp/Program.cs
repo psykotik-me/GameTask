@@ -5,22 +5,17 @@
 
 using System.Configuration;
 using GameTask;
+using GameTaskApp;
 
 try
 {
-    string low = ConfigurationManager.AppSettings["Low"];
-    string high = ConfigurationManager.AppSettings["High"];
-    if (low=="" || high=="" || low==null || high==null)
+    ConfigParse config = new ConfigParse();
+    int m=0, n=0;
+    if (config.readRange())
     {
-        throw new ConfigurationErrorsException("Межі діапазону не задані у конфігураційному файлі! Перевірте App.config");
-    }
-
-    if (!int.TryParse(low, out int m) || !int.TryParse(high, out int n)) 
-    {
-        throw new ConfigurationErrorsException("Межі діапазону задані не цілими числами у конфігураційному файлі! Перевірте App.config");
+        m = config.minValue; n = config.maxValue;
     }
     TheGame game = new TheGame(m, n);
-
 
     Console.Write($"Компутер загадав число у діапазоні [{m},{n}] і грає з вами в гру)) Спробуйте його відгадати і введіть ваш варіант:");
 
