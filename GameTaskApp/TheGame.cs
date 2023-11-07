@@ -6,7 +6,14 @@ namespace GameTask
 	public class TheGame
 	{
 		private int thenumber;
-		public TheGame(int m, int n)
+        public enum Guess
+        {
+			notAssigned,
+            more,
+            less,
+            equal
+        };
+        public TheGame(int m, int n)
 		{
 		//	Random random
 			thenumber = new Random().Next(m, n+1);	
@@ -15,11 +22,11 @@ namespace GameTask
 		public int getThenumber()
 		{ return thenumber; }
 
-		public char checkVariant(int v)
+		public Guess checkVariant(int v)
 		{
-			if (v < thenumber) return '<'; // "Ваше число менше загаданного, спробуте ще!";
-			else if (v > thenumber) return '>'; //"Ваше число більше загаданного, спробуте ще!";
-			else return '='; //$"Вітаю! ви вгадали загадане число - {thenumber}";
+			if (v < thenumber) return Guess.less; // "Ваше число менше загаданного, спробуте ще!";
+			else if (v > thenumber) return Guess.more; //"Ваше число більше загаданного, спробуте ще!";
+			else return Guess.equal; //$"Вітаю! ви вгадали загадане число - {thenumber}";
 					
         }
 		public int nextGame(int m, int n)

@@ -9,9 +9,10 @@ namespace GameTaskApp
 {
     internal class ConfigParse
     {
-        public int minValue;
-        public int maxValue;
-        public bool readRange()
+        public int minValue = 0;
+        public int maxValue = 100;
+
+        public ConfigParse()
         {
             string low = ConfigurationManager.AppSettings["Low"];
             string high = ConfigurationManager.AppSettings["High"];
@@ -24,9 +25,13 @@ namespace GameTaskApp
             {
                 throw new ConfigurationErrorsException("Межі діапазону задані не цілими числами у конфігураційному файлі! Перевірте App.config");
             }
+
+            if (minValue >= maxValue)
+            {
+                throw new ConfigurationErrorsException("Межі діапазону задані невірно, мінімальне значення має бути менше максимального! Перевірте App.config");
+            }
             minValue = m;
             maxValue = n;
-            return true;
         }
     }
 }

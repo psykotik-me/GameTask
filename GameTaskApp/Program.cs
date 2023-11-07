@@ -4,28 +4,31 @@
 // Гра продовжується поки не вгадаєш число. Потім пропонує зіграти ще або вийти
 
 using System.Configuration;
+using System.Reflection.Metadata;
+using System.Runtime.CompilerServices;
 using GameTask;
 using GameTaskApp;
 
 try
 {
+
+
     ConfigParse config = new ConfigParse();
-    int m=0, n=0;
-    if (config.readRange())
-    {
-        m = config.minValue; n = config.maxValue;
-    }
+    int m = config.minValue; 
+    int n = config.maxValue;
+
     TheGame game = new TheGame(m, n);
 
     Console.Write($"Компутер загадав число у діапазоні [{m},{n}] і грає з вами в гру)) Спробуйте його відгадати і введіть ваш варіант:");
 
     int variant = m-1;
     bool isnumber = int.TryParse(Console.ReadLine(), out variant);
-    char guess = '1';
+    char replay = '1';
+    TheGame.Guess guess = TheGame.Guess.notAssigned;
 
-    while (guess == '1')
+    while (replay == '1')
     {
-        while (guess != '=')
+        while (guess != TheGame.Guess.equal)
         {
             while (!isnumber)
             {
@@ -33,16 +36,16 @@ try
                 isnumber = int.TryParse(Console.ReadLine(), out variant);
             }
             guess = game.checkVariant(variant);
-            if (guess == '<') Console.WriteLine($"Ваше число {variant} менше загаданного, спробуте ще!");
-            else if (guess == '>') Console.WriteLine($"Ваше число {variant} більше загаданного, спробуте ще!");
-            else if (guess == '=') break;
+            if (guess == TheGame.Guess.less) Console.WriteLine($"Ваше число {variant} менше загаданного, спробуте ще!");
+            else if (guess == TheGame.Guess.more) Console.WriteLine($"Ваше число {variant} більше загаданного, спробуте ще!");
+            else if (guess == TheGame.Guess.equal) break;
             Console.Write("Введіть настпний варіант: ");
             isnumber = int.TryParse(Console.ReadLine(), out variant);
         }
         Console.WriteLine($"Вітаю! Ви угадали число {variant}");
         Console.Write("Якщо бажаєте зіграти ще раз, введіть 1:");
-        guess = Console.ReadLine()[0];
-        if (guess == '1') game.nextGame(m, n);
+        replay = Console.ReadLine()[0];
+        if (replay == '1') game.nextGame(m, n);
         isnumber = false;
     }
 }
