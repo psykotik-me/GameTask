@@ -1,0 +1,15 @@
+{
+  "version": 2,
+  "dgSpecHash": "D2pJLmzoJ7ja7dzXAm3GFF0VcY81asoKBat5Ia/vlw1pHnsjzOJwF0Pe6E32/k05/+X67LHC99gGjuVGE/xAEg==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Psykotik\\Documents\\C# projects\\GameTask\\GameTaskApp\\GameTaskApp.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Psykotik\\.nuget\\packages\\microsoft.win32.systemevents\\7.0.0\\microsoft.win32.systemevents.7.0.0.nupkg.sha512",
+    "C:\\Users\\Psykotik\\.nuget\\packages\\system.configuration.configurationmanager\\7.0.0\\system.configuration.configurationmanager.7.0.0.nupkg.sha512",
+    "C:\\Users\\Psykotik\\.nuget\\packages\\system.drawing.common\\7.0.0\\system.drawing.common.7.0.0.nupkg.sha512",
+    "C:\\Users\\Psykotik\\.nuget\\packages\\system.security.cryptography.protecteddata\\7.0.0\\system.security.cryptography.protecteddata.7.0.0.nupkg.sha512",
+    "C:\\Users\\Psykotik\\.nuget\\packages\\system.security.permissions\\7.0.0\\system.security.permissions.7.0.0.nupkg.sha512",
+    "C:\\Users\\Psykotik\\.nuget\\packages\\system.windows.extensions\\7.0.0\\system.windows.extensions.7.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}
