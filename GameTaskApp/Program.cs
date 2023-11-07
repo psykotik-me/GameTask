@@ -23,10 +23,10 @@ try
 
     int variant = m-1;
     bool isnumber = int.TryParse(Console.ReadLine(), out variant);
-    char replay = '1';
+    string replay = "1";
     TheGame.Guess guess = TheGame.Guess.notAssigned;
 
-    while (replay == '1')
+    while (replay == "1")
     {
         while (guess != TheGame.Guess.equal)
         {
@@ -44,8 +44,8 @@ try
         }
         Console.WriteLine($"Вітаю! Ви угадали число {game.getThenumber()}");
         Console.Write("Якщо бажаєте зіграти ще раз, введіть 1:");
-        replay = Console.ReadLine()[0];
-        if (replay == '1') game.nextGame(m, n);
+        replay = Console.ReadLine();
+        if (replay == "1") game.nextGame(m, n);
         //Console.WriteLine(game.getThenumber());
         isnumber = false;
         //variant = m-1;
