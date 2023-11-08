@@ -12,8 +12,9 @@ namespace GameTaskApp
         public TheGame(int min, int max)
 		{
 		//	Random random
-			thenumber = new Random().Next(m, n+1);
-            m = min; n=max;
+			thenumber = new Random().Next(min, max+1);
+            m = min; 
+            n = max;
 		}
 
 		public int getThenumber()
@@ -26,9 +27,11 @@ namespace GameTaskApp
 			else return Guess.equal; //$"Вітаю! ви вгадали загадане число - {thenumber}";
 					
         }
-		public int nextGame(int m, int n)
+		public int nextGame(int min, int max)
 		{
-            this.thenumber = new Random().Next(m, n + 1);
+            this.thenumber = new Random().Next(min, max + 1);
+            this.m = min;
+            this.n = max;
 			return thenumber;
         }
 

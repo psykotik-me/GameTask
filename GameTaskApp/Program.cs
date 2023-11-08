@@ -22,17 +22,18 @@ try
     Console.Write($"Компутер загадав число у діапазоні [{m},{n}] і грає з вами в гру)) Спробуйте його відгадати:");
 
     int variant = m-1;
-    bool isnumber = int.TryParse(Console.ReadLine(), out variant);
+    bool isnumber = false;// int.TryParse(Console.ReadLine(), out variant);
     string replay = "1";
     Guess guess = Guess.notAssigned;
 
-    while (replay == "1")
+    while (true)
     {
         game.play();
         Console.WriteLine($"Вітаю! Ви угадали число {game.getThenumber()}");
         Console.Write("Якщо бажаєте зіграти ще раз, введіть 1:");
         replay = Console.ReadLine();
-        if (replay == "1") game.nextGame(m, n);
+        if (replay != "1") break;
+        game.nextGame(m, n);
         isnumber = false;
         guess = Guess.notAssigned;
     }
