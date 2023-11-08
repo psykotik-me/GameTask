@@ -6,8 +6,8 @@
 using System.Configuration;
 using System.Reflection.Metadata;
 using System.Runtime.CompilerServices;
-using GameTask;
 using GameTaskApp;
+
 
 try
 {
@@ -19,37 +19,22 @@ try
 
     TheGame game = new TheGame(m, n);
 
-    Console.Write($"Компутер загадав число у діапазоні [{m},{n}] і грає з вами в гру)) Спробуйте його відгадати і введіть ваш варіант:");
+    Console.Write($"Компутер загадав число у діапазоні [{m},{n}] і грає з вами в гру)) Спробуйте його відгадати:");
 
     int variant = m-1;
     bool isnumber = int.TryParse(Console.ReadLine(), out variant);
     string replay = "1";
-    TheGame.Guess guess = TheGame.Guess.notAssigned;
+    Guess guess = Guess.notAssigned;
 
     while (replay == "1")
     {
-        while (guess != TheGame.Guess.equal)
-        {
-            while (!isnumber)
-            {
-                Console.Write("Введіть ціле число!:");
-                isnumber = int.TryParse(Console.ReadLine(), out variant);
-            }
-            guess = game.checkVariant(variant);
-            if (guess == TheGame.Guess.less) Console.WriteLine($"Ваше число {variant} менше загаданного, спробуте ще!");
-            else if (guess == TheGame.Guess.more) Console.WriteLine($"Ваше число {variant} більше загаданного, спробуте ще!");
-            else if (guess == TheGame.Guess.equal) break;
-            Console.Write("Введіть наступний варіант: ");
-            isnumber = int.TryParse(Console.ReadLine(), out variant);
-        }
+        game.play();
         Console.WriteLine($"Вітаю! Ви угадали число {game.getThenumber()}");
         Console.Write("Якщо бажаєте зіграти ще раз, введіть 1:");
         replay = Console.ReadLine();
         if (replay == "1") game.nextGame(m, n);
-        //Console.WriteLine(game.getThenumber());
         isnumber = false;
-        //variant = m-1;
-        guess = TheGame.Guess.notAssigned;
+        guess = Guess.notAssigned;
     }
 }
 catch (ConfigurationErrorsException Cex)
