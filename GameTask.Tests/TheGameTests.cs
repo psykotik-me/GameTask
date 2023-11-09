@@ -20,7 +20,7 @@ namespace GameTaskApp.Tests
         public void CheckVariant_ShouldReturnExpectedResult(int v, int thenumber, Guess expectedResult)
         {
             TheGame game = new TheGame(1, 100);
-            game.getThenumber = () => thenumber;
+            thenumber = game.getThenumber();
             Guess result = game.checkVariant(v);
             Assert.AreEqual(expectedResult, result);
         }
